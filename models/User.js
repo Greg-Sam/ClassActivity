@@ -1,4 +1,4 @@
-const { model, Schema } require('mongoose')
+const { model, Schema } = require('mongoose')
 
 const User = new Schema({
 
@@ -19,6 +19,10 @@ const User = new Schema({
     unique: true
     
   },
+  posts:[{
+   type: Schema.Types.ObjectId,
+   ref: 'Post'
+  }]
  
 }, {timestamps: true })
 
