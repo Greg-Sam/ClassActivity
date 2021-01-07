@@ -46,20 +46,25 @@ const Form = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextareaAutosize
-            id="text"
-            aria-label="minimum height"
-            rowsMin={3} placeholder="Blog Text"
+          <TextField
+            multiline
+            id="title"
             style={{ margin: 8 }}
+            placeholder="Title"
             fullWidth
             margin="normal"
             InputLabelProps={{
               shrink: true,
             }}
-            variant="filled" />
+            variant="filled"
+            rows={4}
+          />
         </Grid>
         <Grid item xs={12}>
-          <Button variant="contained">Submit</Button>
+          <Button 
+          variant="contained"
+            // onClick={handleAddItem}
+            >Submit</Button>
         </Grid>
       </Grid>
     </div>

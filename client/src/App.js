@@ -4,7 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Navbar from './components/Navbar'
 import Form from './components/Form'
-
+import Blog from './components/Blog'
+import background from './img/background.jpg'
 
 const App = () => {
 
@@ -24,14 +25,19 @@ const App = () => {
     <>
 
 
-      <Navbar/>
+      <Navbar />
+      
       <Fragment>
         <CssBaseline />
-        <Container maxWidth="sm">
+        <Container
+          maxWidth="sm"
+          style={{ backgroundImage: `url(${background})` }}
+        >
           <Form />
+          <Blog />
         </Container>
       </Fragment>
-      
+
     </>
   )
 }
