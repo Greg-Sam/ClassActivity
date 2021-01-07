@@ -22,10 +22,9 @@
   "bugs": {
     "url": "https://github.com/QFults/01-mern/issues"
   },
-  "homepage": "https://github.com/QFults/01-mern#readme",
+  "homepage": "https://github.com/Greg-S",
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
     "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
