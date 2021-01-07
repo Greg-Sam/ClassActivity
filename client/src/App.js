@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -8,6 +8,8 @@ import Blog from './components/Blog'
 import background from './img/background.jpg'
 
 const App = () => {
+
+
 
   const [drawerState, setDrawerState] = useState({
     left: false
@@ -21,22 +23,27 @@ const App = () => {
     setDrawerState({ ...drawerState, [anchor]: open });
   }
 
+    const [blogState, setBlogState] = useState({
+      blogs: []
+    })
+
   return (
     <>
 
 
       <Navbar />
       
-      <Fragment>
+      <>
         <CssBaseline />
         <Container
           maxWidth="sm"
           style={{ backgroundImage: `url(${background})` }}
         >
           <Form />
+
           <Blog />
         </Container>
-      </Fragment>
+      </>
 
     </>
   )
