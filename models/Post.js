@@ -4,13 +4,14 @@ const { model, Schema } = require('mongoose')
 const Post = new Schema({
    
   post: {
-    type: String,
+    title: String,
+    text: String,
     required: true
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  // user: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User'
+  // }
 }, { timestamps: true })
 
 module.exports = model( 'Item', Item )
