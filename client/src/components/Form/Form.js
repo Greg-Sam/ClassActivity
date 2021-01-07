@@ -34,6 +34,7 @@ const Form = (props) => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
+            name="title"
             id="title"
             style={{ margin: 8 }}
             placeholder="Title"
@@ -43,14 +44,17 @@ const Form = (props) => {
               shrink: true,
             }}
             variant="filled"
+            value={props.title}
+            onChange={props.handleInputChange}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
             multiline
-            id="title"
+            name="text"
+            id="text"
             style={{ margin: 8 }}
-            placeholder="Title"
+            placeholder="Text"
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -58,6 +62,8 @@ const Form = (props) => {
             }}
             variant="filled"
             rows={4}
+            value={props.text}
+            onChange={props.handleInputChange}
           />
         </Grid>
         <Grid item xs={12}>

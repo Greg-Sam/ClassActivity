@@ -25,88 +25,93 @@ const blogs = [
     text: "test text4"
   }
 ]
+const App = () => {
 
 const {
   getPosts,
   createPost,
 } = PostAPI
 
-const App = () => {
 
   const [postState, setPostState] = useState({
-    post: '',
+    title: '',
+    text: '',
     posts: []
   })
-  const handleInputChange = () => 
-  postState.handleInputChange = event => {
+
+const handleInputChange = event =>
     setPostState({ ...postState, [event.target.name]: event.target.value })
-  }
 
-  postState.handleAddPost = event => {
-    let posts = JSON.parse(JSON.stringify(postState.posts))
-    createPost({
-      text: postState.post
+
+const handleAddPost = event => {
+  let posts = JSON.parse(JSON.stringify(postState.posts))
+  createPost({
+    text: postState.post
+  })
+    .then(({ data: post }) => {
+      posts.push(post)
+      setPostState({ ...postState, posts, post: '' })
     })
-      .then(({ data: post }) => {
-        posts.push(post)
-        setPostState({ ...postState, posts, post: '' })
-      })
-      .catch(err => console.error(err))
+    .catch(err => console.error(err))
+}
+
+useEffect(() => {
+  getPosts()
+    .then(({ data: posts }) => {
+      setPostState({ ...postState, posts })
+    })
+}, [])
+
+const [drawerState, setDrawerState] = useState({
+  left: false
+})
+
+const toggleDrawer = (anchor, open) => (event) => {
+  if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    return;
   }
 
-  useEffect(() => {
-    getPosts()
-      .then(({ data: posts }) => {
-        setPostState({ ...postState, posts })
-      })
-  }, [])
+  setDrawerState({ ...drawerState, [anchor]: open });
+}
 
-  const [drawerState, setDrawerState] = useState({
-    left: false
-  })
+const [blogState, setBlogState] = useState({
+  blogs: []
+})
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
 
-    setDrawerState({ ...drawerState, [anchor]: open });
-  }
 
-  const [blogState, setBlogState] = useState({
-    blogs: []
-  })
+return (
+  <>
 
-  return (
+
+    <Navbar />
+
     <>
-
-
-      <Navbar />
-
-      <>
-        <CssBaseline />
-        <Container
-          maxWidth="sm"
-          style={{ backgroundImage: `url(${background})` }}
-        >
-          <Form
-            addItem={handleAddPost}
-            inputChange={handleInputChange} />
-          {
-            blogs.map((data, i) =>
-              <Blog
-                text={data.text}
-                title={data.title}
-              />
-            )
-          }
-          <Blog
-          />
-        </Container>
-      </>
-
+      <CssBaseline />
+      <Container
+        maxWidth="sm"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <Form
+          handleAddPost={handleAddPost}
+          handleInputChange={handleInputChange}
+          text={postState.text} 
+          title={postState.title}/>
+        {
+          blogs.map((data, i) =>
+            <Blog
+              text={data.text}
+              title={data.title}
+            />
+          )
+        }
+        <Blog
+        />
+      </Container>
     </>
-  )
+
+  </>
+)
 }
 
 export default App
