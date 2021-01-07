@@ -1,5 +1,9 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import Navbar from './components/Navbar'
+import Form from './components/Form'
 
 
 const App = () => {
@@ -18,7 +22,15 @@ const App = () => {
 
   return (
     <>
+
+
       <Navbar/>
+      <Fragment>
+        <CssBaseline />
+        <Container maxWidth="sm">
+          <Form />
+        </Container>
+      </Fragment>
       
     </>
   )
