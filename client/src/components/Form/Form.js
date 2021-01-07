@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
   
 
-const Form = () => {
+const Form = (props) => {
 
   const classes = useStyles();
 
@@ -63,7 +63,7 @@ const Form = () => {
         <Grid item xs={12}>
           <Button 
           variant="contained"
-            // onClick={handleAddItem}
+            onClick={props.handleAddPost}
             >Submit</Button>
         </Grid>
       </Grid>

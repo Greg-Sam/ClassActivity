@@ -7,6 +7,24 @@ import Form from './components/Form'
 import Blog from './components/Blog'
 import background from './img/background.jpg'
 import PostAPI from '../src/utils/PostAPI/PostAPI'
+const blogs = [
+  {
+    title: "test",
+    text: "test text"
+  },
+  {
+    title: "test2",
+    text: "test text"
+  },
+  {
+    title: "test3",
+    text: "test text3"
+  },
+  {
+    title: "test4",
+    text: "test text4"
+  }
+]
 
 const {
   getPosts,
@@ -19,7 +37,7 @@ const App = () => {
     post: '',
     posts: []
   })
-
+  const handleInputChange = () => 
   postState.handleInputChange = event => {
     setPostState({ ...postState, [event.target.name]: event.target.value })
   }
@@ -55,25 +73,35 @@ const App = () => {
     setDrawerState({ ...drawerState, [anchor]: open });
   }
 
-    const [blogState, setBlogState] = useState({
-      blogs: []
-    })
+  const [blogState, setBlogState] = useState({
+    blogs: []
+  })
 
   return (
     <>
 
 
       <Navbar />
-      
+
       <>
         <CssBaseline />
         <Container
           maxWidth="sm"
           style={{ backgroundImage: `url(${background})` }}
         >
-          <Form />
-
-          <Blog />
+          <Form
+            addItem={handleAddPost}
+            inputChange={handleInputChange} />
+          {
+            blogs.map((data, i) =>
+              <Blog
+                text={data.text}
+                title={data.title}
+              />
+            )
+          }
+          <Blog
+          />
         </Container>
       </>
 

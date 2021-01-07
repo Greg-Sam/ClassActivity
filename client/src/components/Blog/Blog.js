@@ -17,27 +17,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Blog = () => {
+const Blog = (props) => {
   const classes = useStyles();
 
-  
+
 
   return (
     <List className={classes.root}>
       <ListItem alignItems="flex-start">
         <ListItemText
-          primary="Brunch this weekend?"
+          primary={props.title}
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Ali Connors
-              </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
+              
+              {props.text}
             </React.Fragment>
           }
         />
